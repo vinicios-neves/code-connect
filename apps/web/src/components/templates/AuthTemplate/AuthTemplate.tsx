@@ -7,25 +7,25 @@ interface AuthTemplateProps {
 
 export function AuthTemplate({ banner, form }: AuthTemplateProps) {
   return (
-    <div className="min-h-screen bg-[#16171b] flex items-center justify-center p-4 relative overflow-hidden">
+    <main className="min-h-screen bg-grafite flex items-center justify-center p-4 relative overflow-hidden">
       {/* Decorative watermark C's */}
       <span
         aria-hidden="true"
-        className="absolute left-[-80px] top-1/2 -translate-y-1/2 text-[320px] font-bold text-[#1e1f26] select-none pointer-events-none leading-none"
+        className="absolute -left-20 top-1/2 -translate-y-1/2 text-[320px] font-bold text-cinza-escuro select-none pointer-events-none leading-none"
       >
         C
       </span>
       <span
         aria-hidden="true"
-        className="absolute right-[-80px] top-1/2 -translate-y-1/2 text-[320px] font-bold text-[#1e1f26] select-none pointer-events-none leading-none"
+        className="absolute -right-20 top-1/2 -translate-y-1/2 text-[320px] font-bold text-cinza-escuro select-none pointer-events-none leading-none"
       >
         C
       </span>
 
       {/* Auth card */}
-      <div className="relative z-10 w-full max-w-3xl bg-[#1e1f26] rounded-2xl overflow-hidden shadow-2xl flex min-h-[520px]">
+      <div className="relative z-10 w-full max-w-3xl bg-cinza-escuro rounded-4xl border border-black overflow-hidden shadow-2xl flex min-h-130">
         {/* Left: banner */}
-        <div className="hidden md:block w-[45%] flex-shrink-0">
+        <div className="hidden md:block w-[45%] shrink-0">
           {banner}
         </div>
 
@@ -34,6 +34,6 @@ export function AuthTemplate({ banner, form }: AuthTemplateProps) {
           {form}
         </div>
       </div>
-    </div>
+    </main>
   )
 }

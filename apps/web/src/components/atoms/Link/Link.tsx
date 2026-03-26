@@ -13,7 +13,7 @@ interface LinkProps {
 export function Link({ to, children, variant = 'default', className = '' }: LinkProps) {
   const variants: Record<LinkVariant, string> = {
     default: 'text-gray-400 hover:text-gray-200 transition-colors',
-    highlight: 'text-green-400 hover:text-green-300 font-medium transition-colors',
+    highlight: 'text-verde-destaque hover:text-verde-destaque/80 font-medium transition-colors',
   }
 
   return (

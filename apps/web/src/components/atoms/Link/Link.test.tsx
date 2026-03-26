@@ -27,6 +27,6 @@ describe('Link', () => {
         <Link to="/signup" variant="highlight">Crie seu cadastro!</Link>
       </MemoryRouter>
     )
-    expect(screen.getByRole('link')).toHaveClass('text-green-400')
+    expect(screen.getByRole('link')).toHaveClass('text-verde-destaque')
   })
 })

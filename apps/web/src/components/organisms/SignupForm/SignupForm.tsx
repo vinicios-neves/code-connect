@@ -6,39 +6,50 @@ import { Link } from '../../atoms/Link/Link'
 import { SocialButton } from '../../atoms/SocialButton/SocialButton'
 import { FormField } from '../../molecules/FormField/FormField'
 
-interface LoginFormData {
+interface SignupFormData {
+  name: string
   email: string
   password: string
   rememberMe: boolean
 }
 
-interface LoginFormProps {
-  onSubmit?: (data: LoginFormData) => void
+interface SignupFormProps {
+  onSubmit?: (data: SignupFormData) => void
 }
 
-export function LoginForm({ onSubmit }: LoginFormProps) {
+export function SignupForm({ onSubmit }: SignupFormProps) {
+  const [name, setName] = useState('')
   const [email, setEmail] = useState('')
   const [password, setPassword] = useState('')
   const [rememberMe, setRememberMe] = useState(false)
 
   function handleSubmit(e: React.FormEvent) {
     e.preventDefault()
-    onSubmit?.({ email, password, rememberMe })
+    onSubmit?.({ name, email, password, rememberMe })
   }
 
   return (
     <div className="flex flex-col gap-6 p-8 w-full">
       <div className="flex flex-col gap-6">
-        <h1 id="login-heading" className="text-3xl font-semibold text-offwhite">Login</h1>
-        <p className="text-2xl text-offwhite">Boas-vindas! Faça seu login.</p>
+        <h1 id="signup-heading" className="text-3xl font-semibold text-offwhite">Cadastro</h1>
+        <p className="text-2xl text-offwhite">Olá! Preencha seus dados.</p>
       </div>
 
-      <form onSubmit={handleSubmit} className="flex flex-col gap-4" noValidate aria-labelledby="login-heading">
+      <form onSubmit={handleSubmit} className="flex flex-col gap-4" noValidate aria-labelledby="signup-heading">
         <FormField
-          label="Email ou usuário"
+          label="Nome"
+          id="name"
+          type="text"
+          placeholder="Nome completo"
+          value={name}
+          onChange={(e) => setName(e.target.value)}
+        />
+
+        <FormField
+          label="Email"
           id="email"
           type="email"
-          placeholder="usuario123"
+          placeholder="Digite seu email"
           value={email}
           onChange={(e) => setEmail(e.target.value)}
         />
@@ -52,20 +63,15 @@ export function LoginForm({ onSubmit }: LoginFormProps) {
           onChange={(e) => setPassword(e.target.value)}
         />
 
-        <div className="flex items-center justify-between">
-          <Checkbox
-            id="remember-me"
-            label="Lembrar-me"
-            checked={rememberMe}
-            onChange={setRememberMe}
-          />
-          <Link to="/forgot-password" variant="default" className="text-sm">
-            Esqueci a senha
-          </Link>
-        </div>
+        <Checkbox
+          id="remember-me"
+          label="Lembrar-me"
+          checked={rememberMe}
+          onChange={setRememberMe}
+        />
 
         <Button type="submit">
-          Login →
+          Cadastrar →
         </Button>
       </form>
 
@@ -76,10 +82,10 @@ export function LoginForm({ onSubmit }: LoginFormProps) {
         <SocialButton icon="/gmail.png" alt="Gmail logo" label="Gmail" />
       </div>
 
-      <p className="text-center text-sm text-offwhite">
-        Ainda não tem conta?{' '}
-        <Link to="/signup" variant="highlight">
-          Crie seu cadastro! 📋
+      <p className="text-sm text-offwhite">
+        Já tem conta?{' '}
+        <Link to="/login" variant="highlight">
+          Faça seu login!
         </Link>
       </p>
     </div>
