@@ -15,9 +15,10 @@ interface SignupFormData {
 
 interface SignupFormProps {
   onSubmit?: (data: SignupFormData) => void
+  error?: string | null
 }
 
-export function SignupForm({ onSubmit }: SignupFormProps) {
+export function SignupForm({ onSubmit, error }: SignupFormProps) {
   const [name, setName] = useState('')
   const [email, setEmail] = useState('')
   const [password, setPassword] = useState('')
@@ -69,6 +70,8 @@ export function SignupForm({ onSubmit }: SignupFormProps) {
           checked={rememberMe}
           onChange={setRememberMe}
         />
+
+        {error && <p className="text-sm text-red-400">{error}</p>}
 
         <Button type="submit">
           Cadastrar →
