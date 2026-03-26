@@ -14,9 +14,10 @@ interface LoginFormData {
 
 interface LoginFormProps {
   onSubmit?: (data: LoginFormData) => void
+  error?: string | null
 }
 
-export function LoginForm({ onSubmit }: LoginFormProps) {
+export function LoginForm({ onSubmit, error }: LoginFormProps) {
   const [email, setEmail] = useState('')
   const [password, setPassword] = useState('')
   const [rememberMe, setRememberMe] = useState(false)
@@ -63,6 +64,8 @@ export function LoginForm({ onSubmit }: LoginFormProps) {
             Esqueci a senha
           </Link>
         </div>
+
+        {error && <p className="text-sm text-red-400">{error}</p>}
 
         <Button type="submit">
           Login →
