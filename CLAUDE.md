@@ -51,7 +51,7 @@ pnpm --filter api test:e2e                           # Run e2e tests
 - Entry: `src/main.tsx` → `src/App.tsx`
 - Vite + React 19, strict TypeScript (`tsconfig.app.json`)
 - ESLint with React hooks and refresh plugins
-- Styling with **Tailwind CSS**
+- Styling with **Tailwind CSS** (v4, config via `@theme` em `src/index.css`)
 
 #### Component Structure — Atomic Design
 
@@ -65,6 +65,34 @@ src/components/
   templates/    # Page-level layouts (no real data)
   pages/        # Full pages wired to real data/routes
 ```
+
+#### Design Tokens — Cores
+
+A paleta do projeto é definida via `@theme` em `src/index.css` e deve ser usada em todos os componentes. **Nunca use hexadecimais diretamente em classes Tailwind.**
+
+| Token | Uso |
+|---|---|
+| `grafite` | Fundo da página |
+| `cinza-escuro` | Fundo de cards/modais |
+| `cinza-medio` | Fundo de inputs, checkboxes |
+| `offwhite` | Texto principal |
+| `verde-destaque` | Acento primário (botões, links, focus rings) |
+| `verde-petroleo` | Texto sobre fundo verde (ex: label do botão primário) |
+
+Exemplos: `bg-grafite`, `text-offwhite`, `bg-verde-destaque`, `text-verde-petroleo`, `focus:ring-verde-destaque`.
+
+#### Design Tokens — Tamanhos de Fonte
+
+Use sempre os tokens padrão do Tailwind mais próximos ao valor do design. **Nunca use tamanhos arbitrários como `text-[31px]`.**
+
+| Token Tailwind | Tamanho | Uso (Figma) |
+|---|---|---|
+| `text-3xl` | 30px | Títulos de página (Subtitle Large) |
+| `text-2xl` | 24px | Subtítulos (Paragraph Large ~22px) |
+| `text-lg` | 18px | Texto de corpo / labels (Paragraph) |
+| `text-base` | 16px | Texto secundário (Paragraph Small ~15px) |
+| `text-sm` | 14px | Texto auxiliar pequeno |
+| `text-xs` | 12px | Labels menores (Label ~12.5px) |
 
 Rules:
 - A component **must not** import from a higher-level category (atoms cannot import molecules).

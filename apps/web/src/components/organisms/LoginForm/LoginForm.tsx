@@ -14,9 +14,10 @@ interface LoginFormData {
 
 interface LoginFormProps {
   onSubmit?: (data: LoginFormData) => void
+  error?: string | null
 }
 
-export function LoginForm({ onSubmit }: LoginFormProps) {
+export function LoginForm({ onSubmit, error }: LoginFormProps) {
   const [email, setEmail] = useState('')
   const [password, setPassword] = useState('')
   const [rememberMe, setRememberMe] = useState(false)
@@ -28,12 +29,12 @@ export function LoginForm({ onSubmit }: LoginFormProps) {
 
   return (
     <div className="flex flex-col gap-6 p-8 w-full">
-      <div>
-        <h1 className="text-2xl font-bold text-white mb-1">Login</h1>
-        <p className="text-gray-400 text-sm">Boas-vindas! Faça seu login.</p>
+      <div className="flex flex-col gap-6">
+        <h1 id="login-heading" className="text-3xl font-semibold text-offwhite">Login</h1>
+        <p className="text-2xl text-offwhite">Boas-vindas! Faça seu login.</p>
       </div>
 
-      <form onSubmit={handleSubmit} className="flex flex-col gap-4" noValidate>
+      <form onSubmit={handleSubmit} className="flex flex-col gap-4" noValidate aria-labelledby="login-heading">
         <FormField
           label="Email ou usuário"
           id="email"
@@ -64,6 +65,8 @@ export function LoginForm({ onSubmit }: LoginFormProps) {
           </Link>
         </div>
 
+        {error && <p className="text-sm text-red-400">{error}</p>}
+
         <Button type="submit">
           Login →
         </Button>
@@ -76,7 +79,7 @@ export function LoginForm({ onSubmit }: LoginFormProps) {
         <SocialButton icon="/gmail.png" alt="Gmail logo" label="Gmail" />
       </div>
 
-      <p className="text-center text-sm text-gray-400">
+      <p className="text-center text-sm text-offwhite">
         Ainda não tem conta?{' '}
         <Link to="/signup" variant="highlight">
           Crie seu cadastro! 📋

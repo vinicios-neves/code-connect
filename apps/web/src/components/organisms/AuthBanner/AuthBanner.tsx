@@ -13,7 +13,7 @@ export function AuthBanner({ imageSrc, imageAlt }: AuthBannerProps) {
       />
       <div className="absolute bottom-6 left-6 flex items-center gap-2">
         <svg width="32" height="32" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
-          <rect width="32" height="32" rx="8" fill="#4ADE80" />
+          <rect width="32" height="32" rx="8" fill="#81FE88" />
           <text x="8" y="23" fill="black" fontSize="18" fontWeight="bold">C</text>
         </svg>
         <span className="text-white font-semibold text-lg leading-tight">
